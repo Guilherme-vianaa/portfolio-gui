@@ -1,0 +1,55 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        List<string> tarefas = new List<string>();
+        
+        while (true)
+        {
+            Console.WriteLine("1. Adicionar tarefa");
+            Console.WriteLine("2. Listar tarefas");
+            Console.WriteLine("3. Remover tarefa");
+            Console.WriteLine("4. Sair");
+            Console.Write("Escolha uma opção: ");
+            int opcao = Convert.ToInt32(Console.ReadLine());
+
+            switch (opcao)
+            {
+                case 1:
+                    Console.Write("Digite a tarefa a ser adicionada: ");
+                    string tarefa = Console.ReadLine();
+                    tarefas.Add(tarefa);
+                    Console.WriteLine("Tarefa adicionada com sucesso!");
+                    break;
+                case 2:
+                    Console.WriteLine("Tarefas:");
+                    foreach (var item in tarefas)
+                    {
+                        Console.WriteLine(item);
+                    }
+                    break;
+                case 3:
+                    Console.Write("Digite a tarefa a ser removida: ");
+                    string tarefaRemover = Console.ReadLine();
+                    if (tarefas.Remove(tarefaRemover))
+                    {
+                        Console.WriteLine("Tarefa removida com sucesso!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Tarefa não encontrada.");
+                    }
+                    break;
+                case 4:
+                    Console.WriteLine("Saindo da aplicação.");
+                    return;
+                default:
+                    Console.WriteLine("Opção inválida.");
+                    break;
+            }
+        }
+    }
+}
