@@ -1,0 +1,57 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        Dictionary<string, string> agenda = new Dictionary<string, string>();
+        
+        while (true)
+        {
+            Console.WriteLine("1. Adicionar contato");
+            Console.WriteLine("2. Buscar contato");
+            Console.WriteLine("3. Listar todos os contatos");
+            Console.WriteLine("4. Sair");
+            Console.Write("Escolha uma opção: ");
+            int opcao = Convert.ToInt32(Console.ReadLine());
+
+            switch (opcao)
+            {
+                case 1:
+                    Console.Write("Nome do contato: ");
+                    string nome = Console.ReadLine();
+                    Console.Write("Número de telefone: ");
+                    string telefone = Console.ReadLine();
+                    agenda[nome] = telefone;
+                    Console.WriteLine("Contato adicionado com sucesso!");
+                    break;
+                case 2:
+                    Console.Write("Digite o nome do contato a ser buscado: ");
+                    string buscaNome = Console.ReadLine();
+                    if (agenda.ContainsKey(buscaNome))
+                    {
+                        Console.WriteLine($"Nome: {buscaNome}, Telefone: {agenda[buscaNome]}");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Contato não encontrado.");
+                    }
+                    break;
+                case 3:
+                    Console.WriteLine("Lista de contatos:");
+                    foreach (var contato in agenda)
+                    {
+                        Console.WriteLine($"Nome: {contato.Key}, Telefone: {contato.Value}");
+                    }
+                    break;
+                case 4:
+                    Console.WriteLine("Saindo da aplicação.");
+                    return;
+                default:
+                    Console.WriteLine("Opção inválida.");
+                    break;
+            }
+        }
+    }
+}
